@@ -39,16 +39,17 @@ func main() {
 	//fmt.Println("\nslice4_2:\n", slice4_2, "cap:", cap(slice4_2))
 	//fmt.Printf("%p\n\n", slice4_2)
 
+	// Slice ranging does not return copy
+	mySlice := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+	sliceRange1 := mySlice[:3]
+	sliceRange2 := mySlice[4:]
+
 	type slice struct {
 		array unsafe.Pointer
 		len   int
 		cap   int
 	}
 
-	// Slice ranging does not return copy
-	mySlice := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
-	sliceRange1 := mySlice[:3]
-	sliceRange2 := mySlice[4:]
 	fmt.Println(*(*slice)(unsafe.Pointer(&sliceRange1)))
 	fmt.Println(*(*slice)(unsafe.Pointer(&sliceRange2)))
 }

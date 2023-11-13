@@ -1,21 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	testMap := map[int]string{
-		1: "value 1",
+	testMap := map[int32]int32{
+		1: 1,
+	}
+	for i := 0; i < 100000; i++ {
+		testMap[int32(i)] = int32(i)
 	}
 
-	testMap[2] = "value 2"
-
-	for k, v := range testMap {
-		fmt.Println(k, v)
+	for i := 0; i < 100000; i++ {
+		a, ok := testMap[int32(i)]
+		fmt.Println(a, ok)
 	}
 
-	delete(testMap, 1)
-
-	fmt.Println("After deletion")
 	for k, v := range testMap {
 		fmt.Println(k, v)
 	}
