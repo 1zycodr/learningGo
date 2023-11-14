@@ -50,6 +50,9 @@ func main() {
 		cap   int
 	}
 
+	mySlice = append(mySlice, 1)
+
+	fmt.Println(*(*slice)(unsafe.Pointer(&mySlice)))
 	fmt.Println(*(*slice)(unsafe.Pointer(&sliceRange1)))
 	fmt.Println(*(*slice)(unsafe.Pointer(&sliceRange2)))
 }
